@@ -1,50 +1,72 @@
-_This document is intended to be a template for working groups established by the TAC, to be used as the README.md file in its repository. All items in italics are descriptions of what context should be there; it is intended to be replaced by content. It is modeled off the [CNCF Serverless WG](https://github.com/cncf/wg-serverless)._
+# Python 3 Working Group
 
-_The intention is that each WG has its own GitHub repo under the [ASWF organization](https://github.com/AcademySoftwareFoundation)._
 
-# _Working group name_
+The purpose of this Working Group is to ease the transition from Python 2 to Python 3
+for Academy Software Foundation (ASWF) projects and ASWF members' internal codebases.
+We hope to achieve this by coordinating key milestones in the VFX industry's transition
+and facilitating the sharing of expertise between ASWF members.
 
-_Describe the purpose of the group in no more that 4-5 sentences._
 
-_Goals are the distinct outcomes that is to be anticipated from the working group, serving as a method for validating activities._
+The goals of the Working Group are the distinct outcomes that are to be anticipated
+from the Working Group. They are as follows:
 
-Goals of the WG are:
 
-1. _goal 1_
-2. ...
+* Share and develop best practices for transitioning to Python 3.
+* Coordinate transition efforts between software developers and vendors.
+* Articulate and share common experiences to avoid duplicate efforts.
 
-_Non-goals are things that the working group are intentionally choosing not to do, the things not expected to change due to the working groups efforts, or the subject matter areas that the working groups doesn’t want to address at this time. _
 
-Non-goals of the WG are:
+The non-goals of the Working Group are
+areas that the Working Group are intentionally choosing not to address.
+They are as follows:
 
-1. _non goal 1_
-2. ...
 
-The TAC member sponsor of this working group is _TAC sponsor name_
+* To provide engineering resources for helping projects transition to Python 3.
+* To provide engineering resources for unblocking ASFW members’ transition efforts,
+although sharing and highlighting blockers may be an important part of coordinating transition efforts.
+
+
+The TAC member sponsor of this working group is Daniel Heckenberg.
+
 
 ## Deliverables
 
-_provide a list of planned deliverables, or links to the deliverables. A best practice is to have a directory named [deliverables](deliverables) in the repo for hosting and managing deliverables._
+
+* Regular updates to the VES committee list of VFX packages and applications that support Python 3.
+This includes packages that are used frequently in VFX and do not already have Python 3 support.
+* A document that collates best practices and advice to consider when transitioning to Python 3,
+not necessarily specific to Python 3.
+* A collection of common problems and their respective solutions found when transitioning to Python 3.
+* A regularly maintained list of risk factors to the VFX industry in its timely transition to Python 3.
+
 
 ## Communication
 
-This WG communicates on the following channels:
 
-- _link to mailing list_
-- _slack channel_
-- _any other channels_
-...
+This Working Group communicates on the following channels:
+
+
+- Mailing list: https://lists.aswf.io/g/wg-python3
+- Slack channel: #wg-python3 at slack.aswf.io
+
 
 ## Meetings
 
-See the [ASWF public calendar](https://lists.aswf.io/calendar). This WG meets _meeting day/time and frequency_. 
 
-_provide the Zoom/conference call details_
+See the [ASWF public calendar](https://lists.aswf.io/calendar).
+This Working Group meets at least once a month.
 
-## In-person meetings
 
-_list if applicable, or skip if not_
+Join Zoom Meeting
+https://zoom.us/j/93986744167 (ID: 93986744167)
+
+
+Join by phone
+(US) +1 877-369-0926
+(CA) +1 855-703-8985
+
 
 ## Meeting notes
 
-Meeting notes, recordings, and any presentations made during WG meetings are available [here](meetings).
+
+Meeting notes, recordings, and any presentations made during Working Group meetings are available [here](meetings).
