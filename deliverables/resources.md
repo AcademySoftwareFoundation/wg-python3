@@ -18,3 +18,10 @@ please also include a short description of why the resource is useful.
   The keynote describes Instagram's high level strategy for transitioning to Python 3.
   This was very useful in coming up with our own strategy.
   They also talk about some of the pitfalls they hit when transitioning.
+
+* Cheat Sheet for Python 2 and 3 compatible code
+  (http://python-future.org/compatible_idioms.html)
+  This is a sub page of the Python `future` website.
+  It provides examples of the differences,
+  and comes with options we can consider when
+  the code must be compatible for both Python 2 and 3.
