@@ -51,7 +51,7 @@ else:
 Good:
 
 ```python
-if not PY2:
+if PY2:
     # Do something Python 2 specific
     ...
 else:
