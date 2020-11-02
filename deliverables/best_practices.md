@@ -71,7 +71,7 @@ but some end up breaking in other ways at run time.
 We can avoid installation of these modules in the newer versions of Python
 by using [PEP-508](https://www.python.org/dev/peps/pep-0508/) environment markers
 to not install the backport modules when in a version of Python
-for the backport provides functionality from.
+that the backport provides functionality from.
 
 Code will also need to guard against usage of the backport module
 to maintain compatibility with Python 2.
@@ -113,7 +113,9 @@ Always choose the version of Python that is correct for your usage.
 * `contextlib2; python_version<'3.6'`:
   `nullcontext` from Python 3.7 is also included.
 * `enum34; python_version<'3.4'`
+* `funcsigs; python_version<'3.3'`
 * `futures; python_version=='2.7'`
+* `mock; python_version<'3.3'`
 * `ordereddict; python_version<'2.7'`
 * `pathlib2; python_version<'3.6'`:
   The `pathlib` module was new in Python 3.4
