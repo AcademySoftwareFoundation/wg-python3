@@ -9,6 +9,50 @@ maintain code clarity, consistency, and compatibility with Python 2+3.
    :local:
 
 
+Introduction
+------------
+
+These guidelines are focused on writing Python scripts and library code that
+is intended to be compatible in both Python 2 and Python 3 environments.
+
+These guidelines draw heavily from the
+`Conservative Python 3 Porting Guide <https://portingguide.readthedocs.io/en/latest/>`_
+(CPPG) and the
+`Futurize Python 3 Cheat Sheet <https://python-future.org/compatible_idioms.html>`_.
+(FPCS).
+
+These guidelines assume an environment where Python modules are heavily shared
+in different environments and host applications, thus features such as the
+standard library monkeypatching done by the `futurize` script, and its
+use of a `builtins` module with non-standard types are avoided due to their
+ability to cause problems in code that may not necessarily be under our direct
+control.  These guidelines take a minimalist approach to attaining Python3
+compatibility.
+
+This guidelines prefers using the `six` helper functions and native types
+rather than the `future.builtins` and its custom types for the purposes of
+overall simplicity.  For example, `future.builtins` provides custom string
+types, which can be problematic in certain senarios such as serialization
+and overall increases complexity because it introduces more types.
+
+These guidelines take the position that it's better to become familiar with
+the core language types and the differences between 2 and 3 dialects than it
+is to introduce a whole new set of replacements for builtins as common as
+`int`, `dict`, `bytes` and `str`.
+
+Unlike the CPPG, these guidelines favor the use of the early `futurize` phases
+rather than the unmaintained `python-modernize` project.  It should be
+noted that `modernize`, even though it is no longer developed and maintained,
+applies many fixes recommended by this document and can be used as a helpful
+porting aid as well.  These guidelines are in alignment with `python-modernize`.
+
+Unlike FPCS, and similarly to the CPPG, these guidelines prefer the use of the
+`six` module and the compatibility helpers it provides.  Removing support for
+Python 2 and transitioning to a Python 3-only code base is outside the scope
+of this document, but use of `six` provides an easy `grep` target for a future
+time when Python 2 support is no longer needed.
+
+
 Python File Conventions
 -----------------------
 
@@ -100,8 +144,19 @@ Shebang lines
 Start executable python scripts using ``#!/usr/bin/env python``.
 This ensures that the Python executable in the environment will be used.
 
-Use "python3" if your code is Python 3-only, otherwise assume that you are writing
-Python 2+3 compatible code.
+Prefer using the "python" name in shebang lines for 2+3 compatibility.
+
+Avoid "python3" unless your script is Python 3-only, otherwise assume that you
+are writing Python 2+3 compatible code and use "python".
+
+Prefer "python" over "python3" because it allows scripts to operate correctly
+in the contexts of virtualenvs where "python" can sometimes refer to "python2"
+and sometimes "python3".
+
+While tools such as setuptools will automatically rewrite shebang lines,
+scripts that do not use setuptools and other scenarios where scripts are
+run as-is benefit from this approach.
+
 
 Python Code Naming Conventions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
