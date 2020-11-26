@@ -121,7 +121,9 @@ Always choose the version of Python that is correct for your usage.
   The `pathlib` module was new in Python 3.4
   but additional features from the Python 3.6 version are also backported.
   See https://docs.python.org/3.6/library/pathlib.html.
-* `typing; python_version<'3.8'`:
-  The `typing` module was new in Python 3.5
-  but additional features from the Python 3.8 version are also backported.
-  See https://docs.python.org/3.8/library/typing.html.
+* `typing; python_version<'3.5'`:
+  This backports the typing module to older versions of Python.
+  Use newer patch versions of Python 3.{5,6,7}.x to get backported features
+  in those versions.
+  See https://docs.python.org/3.7/library/typing.html.
+* `unittest2; python_version<'3.5'`
