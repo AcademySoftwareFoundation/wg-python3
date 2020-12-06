@@ -127,3 +127,106 @@ Always choose the version of Python that is correct for your usage.
   in those versions.
   See https://docs.python.org/3.7/library/typing.html.
 * `unittest2; python_version<'3.5'`
+
+## Avoid use of futurize stage 2 and its standard library backports
+
+[futurize](https://python-future.org/overview.html#automatic-conversion-to-py2-3-compatible-code)
+can be helpful for transitioning standalone projects and scripts to
+Python 3, but `--futurize --stage2` adds dependencies on the
+`future.standard_library` module that changes the behavior of the Python
+standard library.  This makes it unsuitable for use in libraries or plugins
+that have to co-exist alongside other python plugins in a host application.
+
+It is preferrable to use `six` and the standard library instead of the
+`future`, `past`, and `builtins` modules provided by `python-future`.
+
+## Read the Conservative Python 3 Porting Guide
+
+[The Conservative Python 3 Porting Guide](https://portingguide.readthedocs.io/en/latest/)
+(CPPG) is an invaluable resource for porting to Python 3.
+This document borrows heavily from the CPPG recommendations.
+
+## Use pylint's py3k mode to catch compatibility issues
+
+Pylint contains a "py3k" mode that enables Python 2 + 3 compatibility checks
+and is extremely helpful when transitioning to Python 2 + 3 compatibility.
+Use of `pylint --py3k` is strongly encouraged.
+
+`pylint --py3k` helps ensure that compatibility does not regress without
+needing to run the code, so it can be especially helpful for maintiaining
+compatibility even when the project does not have tests.
+
+## Use the six module for Python 2 + 3 compatible idioms
+
+Familiarize yourself with the [six module](https://pypi.org/project/six/).
+`six` contains helpful functions and symbols that allow you to write
+compatible code that behaves consistently across Python versions.
+
+Using `six` allows us to grep for `six.` and common symbols such as `PY2` in
+the future when we're ready to drop support for Python 2.
+
+As noted above, `six.PY2` should be used to special-case Python 2 code when
+using `six` so that Python 3 (and newer) is on the forward-looking code path.
+
+    if six.PY2:
+        # Python 2 code to be removed in the future.
+    else:
+        # Python 3, 4, etc.
+
+* Consider using `six.text_type` and `six.binary_type` to refer to
+  `unicode` (python3 `str`) and `str` (python3 `bytes`) across versions.
+
+* The builtin `long` type no longer exists in Python 3.
+  Use `isinstance(value, six.integer_types)` to detect integers instead of the
+  traditional `isinstance(value, (int, long))` Python 2 idiom.
+
+* Use `six.string_types` to detect string types, `unicode`+`str` on Python 2
+  and `str`-only on Python 3, using `isinstance(value, six.string_types)`.
+
+* Use the `six.itervalues(dict)` and `six.iteritems(dict)` dict iterator
+  functions to deal with the removal of `dict.iteritems()` and related
+  methods.  If performance is not a concern then the cost of constructing a
+  list using `dict.items()` on Python 2 may be an alternative to
+  `six.iteritems(dict)` when updating code that uses `dict.iteritems()`.
+
+## Consider use of python-modernize
+
+The CPPG recommends the use of
+[python-modernize](https://portingguide.readthedocs.io/en/latest/tools.html#automated-fixer-python-modernize)
+for making code 2 + 3 compatible.  `python-modernize`, like `futurize`, is
+an automated Python code fixer built on top of the `2to3` library.
+
+Unlike `futurize`, `modernize` does not rely on monkey-patching of the
+standard library and is safer to use in more circumstances.
+
+`modernize` contains fixers that levarage the `six` module to achieve 2 + 3
+compatibility and is most in tune with the recommendations set forth in this
+document.
+
+## Be Mindful of Unicode Literals
+
+One of the last steps in the porting process should be to enable
+`from __future__ import unicode_literals` so that all string literals
+in the file are treated as unicode text strings.
+
+Enabling `from __future__ import unicode_literals` tends to
+have the most dramatic effect on the behavior of Python 2 code.  Consider the
+following example:
+
+        def example():
+            return 'hello world'
+
+This example will return a different type when unicode literals are enabled,
+and thus can have impact on externals callers of this function.
+
+Consider enabling unicode literals separately as it tends to have a
+larger impact and may be worth addressing after the rest of the simpler
+future imports and fixes have been addressed.
+
+## Additional Links
+
+* The futurize project contains a
+[Cheat Sheet](https://python-future.org/compatible_idioms.html)
+for writing Python 2 + 3 compatible code with a list of compatible idioms.
+Please note that some of the examples leverage the `future`, `builtins` and
+`past` modules, and thus may not be appropriate for libraries or plugins.
