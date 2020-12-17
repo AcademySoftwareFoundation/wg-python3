@@ -1,4 +1,4 @@
-# Best Practices
+# Python 3 Transition Guide
 
 This document collates some best practices and advice to consider
 when transitioning to Python 3.
