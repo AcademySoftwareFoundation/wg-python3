@@ -10,7 +10,7 @@
 
 - Notetaker
   - Person
-  
+
 - Review action points from last meeting
   - None
 
@@ -33,10 +33,10 @@
     - Day Month Year
 
 # Action Items (AIs)
-  - 
+  - None
 
 # Notes
-  - 
+  - None
 
 # Chat
-  - 
+  - None
