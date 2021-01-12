@@ -158,7 +158,7 @@ compatibility even when the project does not have tests.
 
 ## Use the six module for Python 2 + 3 compatible idioms
 
-Familiarize yourself with the [six module](https://pypi.org/project/six/).
+Familiarize yourself with the [six package](https://pypi.org/project/six/).
 `six` contains helpful functions and symbols that allow you to write
 compatible code that behaves consistently across Python versions.
 
@@ -172,6 +172,10 @@ using `six` so that Python 3 (and newer) is on the forward-looking code path.
         # Python 2 code to be removed in the future.
     else:
         # Python 3, 4, etc.
+
+*Note that DCCs might ship with a bundled version of `six`. The version
+that they ship with might not be up to date, which means some functions might
+not be available.*
 
 * Consider using `six.text_type` and `six.binary_type` to refer to
   `unicode` (python3 `str`) and `str` (python3 `bytes`) across versions.
