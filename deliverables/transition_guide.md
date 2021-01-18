@@ -219,6 +219,15 @@ following example:
 This example will return a different type when unicode literals are enabled,
 and thus can have impact on externals callers of this function.
 
+Now consider this example with a non-ASCII character:
+
+        # -*- coding: utf-8 -*-
+        def example():
+            raise Exception('héllo world')
+
+In Python 2, with unicode literals enabled, it will fail to convert the message
+to str and will fail with  `<exception str() failed>`.
+
 Consider enabling unicode literals separately as it tends to have a
 larger impact and may be worth addressing after the rest of the simpler
 future imports and fixes have been addressed.
