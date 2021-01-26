@@ -173,10 +173,6 @@ using `six` so that Python 3 (and newer) is on the forward-looking code path.
     else:
         # Python 3, 4, etc.
 
-*Note that DCCs might ship with a bundled version of `six`. The version
-that they ship with might not be up to date, which means some functions might
-not be available.*
-
 * Consider using `six.text_type` and `six.binary_type` to refer to
   `unicode` (python3 `str`) and `str` (python3 `bytes`) across versions.
 
@@ -192,6 +188,17 @@ not be available.*
   methods.  If performance is not a concern then the cost of constructing a
   list using `dict.items()` on Python 2 may be an alternative to
   `six.iteritems(dict)` when updating code that uses `dict.iteritems()`.
+
+*Note that DCCs might ship with a bundled version of `six`. The version
+that they ship with might not be up to date, which means some functions might
+not be available. Here is a list of the known DCCs that ship with `six` as of January 2021:*
+
+| DCC     | Version             | six version                          | Notes                                        |
+|---------|---------------------|--------------------------------------|----------------------------------------------|
+| Maya    | 2020                | 1.10.0                               | Not distributed in earlier versions of Maya. |
+| Nuke    | 12.\*               | 1.10.0                               | Not distributed in earlier versions of Nuke. |
+| Houdini | 15.\*, 16.\*, 17.\* | 1.9.0                                |                                              |
+|         | 18.\*               | 1.13.0                               |                                              |
 
 ## Consider use of python-modernize
 
