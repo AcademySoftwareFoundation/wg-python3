@@ -214,6 +214,15 @@ standard library and is safer to use in more circumstances.
 compatibility and is most in tune with the recommendations set forth in this
 document.
 
+> :warning: **When modernizing code that uses maya.cmds:** At the time of
+> writing, modernize will try to convert keyword arguments named "long"
+> (eg. `maya.cmds.ls(long=False)`) to "int" (eg. `maya.cmds.ls(int=False)`).
+> Although the underlying issue has been fixed,
+> there has not been a release of the library with the fix included.
+> Modernize 0.8.0 is required to use the library that contains the fix,
+> and the fix itself is in the fissix library:
+> https://github.com/jreese/fissix/commit/c1581648bc7a2bf35f08da99bfced69a5bc15920
+
 ## Be Mindful of Unicode Literals
 
 One of the last steps in the porting process should be to enable
