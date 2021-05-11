@@ -1,4 +1,4 @@
-# **ASWF Python 3 Working Group Meeting - Month Day, Year**
+# **ASWF Python 3 Working Group Meeting - Day Month Year**
 
 ## Attendees
 * [ ] Ashley Whetter - Chairperson, DNEG
@@ -30,7 +30,7 @@
   - None
 
 - Next meeting
-    - Day Month Year
+  - Day Month Year
 
 # Action Items (AIs)
   - None
