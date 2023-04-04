@@ -1,3 +1,5 @@
+**NOTICE: This working group is no longer active and this repo is archived**
+
 # Python 3 Working Group
 
 
